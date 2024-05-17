@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video Stream</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            /* General styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+    
+            body {
+                background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                height: 100vh;
+                margin: 0;
+            }
+    
+            .header {
+                color: #012225;
+                width: 100%;
+                padding-bottom: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column; /* To stack items vertically */
+            }
+    
+            .logo {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 310px;
+                margin-top: 70px;
+            }
+    
+            h2 {
+                font-size: 2.5em;
+                color: #012225;
+                margin-top: 20px;
+            }
+    
+            /* Section styles */
+            .result-video-container {
+                text-align: center;
+            }
+    
+            .result-video {
+                width: 100%;
+                max-width: 800px;
+                height: auto;
+                border-radius: 15px;
+                margin-top: 20px;
+                border: 5px solid #388087; /* Add border around video player */
+            }
+            .logoback {
+            position: absolute; /* Position the back arrow absolutely */
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            width: 50px; /* Set the desired width for the back arrow */
+            height: auto; /* Let the height adjust proportionally */
+            border-radius: 50%; /* Make the back arrow round */
+            margin: 0;
+            z-index: 1; /* Ensure the back arrow is above other content */
+        }
+    
+            
+    
+        </style>
+        
+    </head>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="/history">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <div class="header">
+            <div class="logo">
+                <img src="\static\logo.jpg" alt="Camera Logo" class="logo">            
+            </div>
+       
+    <div class="result-video-container">
+        <!-- Add the video heading in the middle -->
+        <h2 class="video-heading">Input Video</h2>
+
+        <!-- Video player -->
+        <video class="result-video" id="videoPlayer" controls>
+            <source src="\static\uploads\{{data}}" type="video/mp4">
+        </video>
+    </div>
+</header>
+</body>
+</html>

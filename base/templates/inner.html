@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Selection within ATM Premise</title>
+    <link rel="stylesheet" href="static/inner-outer.css">
+
+</head>
+
+<body>
+    
+    <div class="header">
+        <a href="/selectcamera">
+            <img src="/static/back-arrow.png" alt="Back" class="logoback">
+        </a>
+        <img src="/static/logo.jpg" alt="Camera Logo" class="logo">
+        <h1>VIGILANCE360</h1>
+    </div>
+    <center><h2>SELECT SOURCE</h2></center>
+    <br>
+    <br>
+    <div class="container">
+        <a href="/inner-upload-video">
+            <button id="first-camera-btn" class="btn">Upload</button>
+        </a>
+    </div>
+
+    <div class="container">
+        <a href="/inner_webcam">
+            <button id="second-camera-btn" class="btn">CCTV Camera</button>
+        </a>
+    </div>
+
+    <script>
+        const innerCameraBtn = document.getElementById('first-camera-btn');
+        const outerCameraBtn = document.getElementById('second-camera-btn');
+
+        innerCameraBtn.addEventListener('click', () => {
+            // Redirect to upload-video.html when Inner Camera button is clicked
+            window.location.href = 'upload-video.html';
+        });
+
+        outerCameraBtn.addEventListener('click', () => {
+            // Redirect to webcamera.html when Outer Camera button is clicked
+            window.location.href = 'outerweb.html';
+        });
+    </script>
+</body>
+
+</html>

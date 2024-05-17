@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/style1.css">
+</head>
+<body>
+
+<div class="header">
+
+    <img src="\static\logo.jpg" alt="Camera Logo" class="logo">            
+    <h1> VIGILANCE360</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+</div>
+    <div class="container">
+        <div class="login-box">
+            
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <div class="input-box">
+                    <input type="text" name="username"required>
+
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                
+                <button type="submit" class="btn">Login</button>
+                <br><br>
+            </form>
+            {{error_message}}
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    color: #012225;
+    height: 20px; /* Adjust height as needed */
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-bottom: 1px;
+
+}
+h2 {
+    font-size: 2.5em;
+    color: #012225;
+}
+
+/* Section styles */
+section.col-sm {
+    background-color: rgb(26, 24, 24);
+    width: 800px;
+    height: 500px;
+    border-radius: 15px;
+    object-fit: contain;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid white;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: contain;
+}
+
+/* Upload form styles */
+.upload-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.custom-file-input,
+.btnCustom,
+.btn {
+    padding: 10px 20px;
+    background-color: #388087;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn:hover,
+.btnCustom:hover {
+    background: #2c6b78;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.btnCustom,
+.btn {
+    margin: 10px;
+    background-color: #fcfaf6;
+    color: #388087;
+    border: 2px solid #388087;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background .3s;
+    margin-bottom: 10px;
+}
+.logoback {
+    width: 50px; /* Set the desired width for the back arrow */
+    height: auto; /* Let the height adjust proportionally */
+    border-radius: 50%; /* Make the back arrow round */
+    margin: 10px; /* Adjust margin as needed */
+    position: absolute; /* Position the back arrow absolutely */
+    top: 10px; /* Position from the top */
+    left: 10px; /* Position from the left */
+    z-index: 1; /* Ensure the back arrow is above other content */
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="/outer-camera">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <!-- Vigilance360 title in the top left corner -->
+        <div class="logo">
+            <img src="\static\logo.jpg" alt="Camera Logo" class="logo">
+            
+        </div>
+        
+        <!-- Video upload title in the top middle -->
+        <h2>UPLOAD VIDEO</h2>
+    </header>
+  <section class="col-sm">
+          <img src="http://127.0.0.1:5059/outer-video" alt="Upload video">
+  </section>
+<section>
+    <div class="new">
+      <form method="POST" enctype="multipart/form-data" style="align-content: center; text-align: center; display: flex; flex-direction: column; align-items: center;">
+        {{ form.hidden_tag() }}
+        {{ form.file(class="custom-file-input") }}
+        <div class="button-group">
+            <button type="submit" name="favorite" value="x" class="btnCustom">Submit</button>
+            <a href="http://127.0.0.1:5059/outer_camera_stop">
+                <button type="button" id="outer-camera-btn" class="btn">Analyse</button>
+            </a>
+        </div>
+      </form>
+    </div>
+</section>
+</body>
+</html>

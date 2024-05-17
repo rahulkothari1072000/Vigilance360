@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <link rel="stylesheet" href="static/screen.css">
+
+    
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <div>
+            <a href="/inner-camera">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <!-- Vigilance360 title in the top left corner -->
+        <div class="logo-section">
+            <img src="\static\logo.jpg" alt="Camera Logo" class="logo">
+            
+        </div>
+        
+        <!-- Video upload title in the top middle -->
+        <h2>UPLOAD VIDEO</h2>
+    </header>
+
+    <!-- Video display section -->
+    <section class="col-sm">
+        <img src="http://127.0.0.1:5059/inner-video" alt="Upload video">
+    </section>
+
+    <!-- Form section -->
+    <section>
+        <div class="new">
+            <form method="POST" enctype="multipart/form-data" style="align-content: center; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                {{ form.hidden_tag() }}
+                {{ form.file(class="custom-file-input") }}
+                <div class="button-group">
+                    <button type="submit" name="favorite" value="x" class="btnCustom">Submit</button>
+                <a href="http://127.0.0.1:5059/inner_camera_stop">
+                    <button type="button" id="outer-camera-btn" class="btn">Analyse</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+
+</html>

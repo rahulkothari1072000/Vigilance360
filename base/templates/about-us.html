@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #388087;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #181717;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2{
+            font-size: 1em;
+            color: #2b2b2b;
+        }
+        /* Add styles for the box */
+        .content-box {
+            border: 2px solid #388087; /* Border color */
+            padding: 20px;
+            border-radius: 10px; /* Optional: Rounded corners */
+        }
+        .logoback {
+            position: absolute; /* Position the back arrow absolutely */
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            width: 50px; /* Set the desired width for the back arrow */
+            height: auto; /* Let the height adjust proportionally */
+            border-radius: 50%; /* Make the back arrow round */
+            margin-top: 50px;
+            z-index: 1; /* Ensure the back arrow is above other content */
+        }
+    </style>
+</head>
+<body>
+    <heder>
+        <div>
+            <a href="/selectcamera">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+    </heder>
+    <nav>
+        <ul>
+            <li><a href="about-us.html">About Us</a></li>
+            <!-- Add more navigation links as needed -->
+        </ul>
+    </nav>
+    <div class="container">
+        <!-- Wrap the heading and paragraph inside a div with class "content-box" -->
+        <div class="content-box">
+            <h1>Vigilance 360</h1>
+            <p>Vigilance 360 is a comprehensive solution to address security threats in Automated Teller Machines (ATM), focusing on pre-incident detection, identifying individuals attempting entry with covered faces. It uses dual-camera surveillance to detect and store entry and exit time. The system detects and alerts authorities about individuals carrying harmful tools. Occupancy monitoring, another use-case of the system, helps maintain a safe environment, and a user-specific session duration enhances operational efficiency. ATM Environment integrates pre-incident detection, real-time detection, and occupancy management to provide a robust solution against diverse security threats. This system ensures a secure and protected ATM environment.</p>
+        </div>
+    </div>
+</body>
+</html>

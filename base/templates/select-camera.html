@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Camera</title>
+
+    <!-- Add CSS styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+
+        .header {
+            display: flex;
+            justify-content: space-between; /* Adjusted to space between elements */
+            align-items: center; /* Vertically align items */
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            width: 100%; /* Ensure the header spans the full width */
+        }
+
+
+        .logo {
+            display:flex;
+            width: 50px; /* Set the desired width for the logo */
+            height: 50px; /* Set the desired height for the logo */
+            border-radius: 50%; /* Make the logo round */
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+      
+
+        .container {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #012225;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #181717;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 270px; /* Set the button width to 200 pixels */
+            height: 60px;
+            background: #fcfaf6;
+            border: 2px solid #388087;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #388087;
+            font-weight: 600;
+            transition: background .3s;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            font-size: 1.2em;
+            color: #ffffff;
+            background: #388087;
+        }
+        
+
+
+        /* Add logout button styles */
+        .logout-button {
+            padding: 10px 20px;
+            background: #ffffff;
+            border: 2px solid #818181;
+            border-radius: 10px;
+            color: #388087;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .logout-button:hover {
+            background: #020202;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+
+        /* Styles for the new History Data button */
+        .history-button {
+            padding: 10px 20px;
+            background: #388087;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .history-button:hover {
+            background: #ffffff;
+            border: 2px solid #388087;
+            font-size: 1.2em;
+            color: #388087;
+
+
+        }
+        .about-button {
+            padding: 10px 20px;
+            background: #388087;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .about-button:hover {
+            background: #ffffff;
+            border: 2px solid #388087;
+            font-size: 1.2em;
+            color: #388087;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <img src="\static\logo.jpg" alt="Camera Logo" class="logo">
+            <h1>VIGILANCE360</h1>
+        </div>
+        <!-- Arrange buttons horizontally -->
+        <div style="display: flex; align-items: center;">
+            <!-- History Data button -->
+            <form action="/history" method="get">
+                <button type="submit" class="history-button">History Data</button>
+            </form>
+            <!-- About Us button -->
+            <form action="/about" method="get">
+                <button type="submit" class="about-button">About Us</button>
+            </form>
+            <!-- Logout button -->
+            <form action="/logout" method="get">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <center>
+        <h2>SELECT CAMERA LOCATION</h2>
+    </center>
+
+    <br>
+    
+    <div class="container">
+        <!-- Camera selection forms... -->
+        <form action="/source" method="post">
+            <input type="hidden" name="camera" value="inner">
+            <button type="submit" id="inner-camera-btn" class="btn">ATM Premises Camera</button>
+        </form>
+        <form action="/source" method="post">
+            <input type="hidden" name="camera" value="outer">
+            <button type="submit" id="outer-camera-btn" class="btn">Outer Premises Camera</button>
+        </form>
+    </div>
+</body>
+
+</html>
+    

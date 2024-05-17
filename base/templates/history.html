@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px; /* Added padding */
+            background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Ensures vertical layout */
+        }
+
+        td {
+            color: #012225; /* Change the color value to the desired color */
+        }
+
+        #table-container {
+            flex: 1; /* Takes up all available space after the heading */
+            overflow: auto; /* Allows scrolling within the container */
+            color: #f6f6f2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #00191f;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #388087;
+            position: sticky; /* Make header sticky */
+            top: 0; /* Stick to the top of the viewport */
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #012225;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header {
+            color: #012225;
+            height: 20px; /* Adjust height as needed */
+            width: 100%;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+            border-radius: 90%;
+            margin-bottom: 20px;
+        }
+                /* Alternate row colors */
+        tr:nth-child(even) {
+            background-color: #ddeaec; /* Alternate color for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f7fafa; /* Alternate color for odd rows */
+        }
+        .logoback {
+            position: absolute; /* Position the back arrow absolutely */
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            width: 50px; /* Set the desired width for the back arrow */
+            height: auto; /* Let the height adjust proportionally */
+            border-radius: 50%; /* Make the back arrow round */
+            margin: 0;
+            z-index: 1; /* Ensure the back arrow is above other content */
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div>
+            <a href="/selectcamera">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <!-- Vigilance360 title in the top left corner -->
+        <div class="logo">
+            <img src="\static\logo.jpg" alt="Camera Logo" class="logo">
+            
+        </div>
+        
+        <!-- Video upload title in the top middle -->
+        <h2>Detection Table</h2>
+    </header>
+
+    
+    
+    
+    <div id="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr.no</th>
+                    <th>Input Video</th>
+                    <th>Output Video</th>
+                    <th>location</th>
+                    <th>Source</th>
+                    <th>Detection Starting Time</th>
+                    <th>Total Detected Person</th>
+                    <th>Statistics</th>
+                    <th>Occupancy Anomaly</th>
+                    <th>Weapon Detected</th>
+                    <th>Detection Completion Time</th>
+                    <th>Visual Representation</th>
+                    
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for display_object in data %}
+                <tr>
+                    <td>{{display_object.detection_id}}</td>
+                    <td>
+                        <a href="http://127.0.0.1:5059/uploads/{{display_object.input_video}}">
+                            input_video
+                        </a>
+                    </td>
+                    <td>
+                        <a href="http://127.0.0.1:5059/output/{{display_object.output_video}}">
+                            output_video
+                        </a>
+                    </td>
+                    <td>{{display_object.camera_location}}</td>
+                    <td>{{display_object.source}}</td>
+                    <td>{{display_object.detection_starting_time.strftime("%d-%b-%Y %H:%M:%S")}}</td>
+                    <td>{{display_object.total_detected_person}}</td>
+                    <td>
+                        {% for person_object in display_object.detection_statistics %}
+                        id:{{person_object.id}}<br>
+                        entry time:{{person_object.entry_time.strftime("%H:%M:%S")}}<br>
+                        exit time:{{person_object.exit_time.strftime("%H:%M:%S")}}<br>
+                        covered time:{{person_object.average_covered_time}}sec<br>
+                        uncovered time:{{person_object.average_uncovered_time}} sec<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for time in display_object.occupancy_anomaly %}
+                        {{time.strftime("%H:%M:%S")}}<br>
+                        {% endfor %}
+                    </td>
+                    <td>{{display_object.weapon}}</td>
+                    <td>{{display_object.detection_completion_time.strftime("%d-%b-%Y %H:%M:%S")}}</td>
+                    <td><a href="http://127.0.0.1:5059/graph/{{display_object.graph_path}}">
+                        graph
+                        
+                      </a></td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+           
+        </table>
+    </div>
+</body>
+</html>

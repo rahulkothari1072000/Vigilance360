@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Video</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            color: #012225;
+            height: 20px; /* Adjust height as needed */
+            width: 100%;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-bottom: 1px;
+
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #012225;
+        }
+
+        /* Section styles */
+        section.col-sm {
+            background-color: rgb(41, 41, 41);
+            width: 800px;
+            height: 500px;
+            border-radius: 15px;
+            object-fit: contain;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid white;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: contain;
+        }
+
+        .custom-file-input,
+        .btnCustom,
+        .btn {
+            padding: 15px 30px; /* Increased padding for bigger buttons */
+            background-color: #388087;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px; /* Increased border-radius for rounded corners */
+            cursor: pointer;
+            font-size: 1.2em; /* Increased font size */
+            transition: background 0.3s;
+        }
+
+        .btn:hover,
+        .btnCustom:hover {
+            background: #2c6b78;
+            font-size: 1.2em;
+            color: #ffffff
+}
+
+        .custom-file-input:hover {
+            background: #2c6b78;
+            
+        }
+
+        .btnCustom,
+        .btn {
+            padding: 7px 15px;
+            margin: 5px;
+            background-color: #fcfaf6;
+            color: #388087;
+            border: 2px solid #388087;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background .3s;
+            margin-bottom: 10px;
+        }
+        #analyzeButton {
+            padding: 7px 15px; /* Adjust padding as needed */
+            margin: 5px;
+            background-color: #388087;
+            color: #ffffff;
+            border: 2px solid #388087;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em; /* Increased font size */
+            transition: background .3s;
+            margin-bottom: 10px;
+        }
+
+        #analyzeButton:hover {
+            background: #ffffff;
+            color: #388087;
+        }
+        .logoback {
+            position: absolute; /* Position the back arrow absolutely */
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            width: 50px; /* Set the desired width for the back arrow */
+            height: auto; /* Let the height adjust proportionally */
+            border-radius: 50%; /* Make the back arrow round */
+            margin: 0;
+            z-index: 1; /* Ensure the back arrow is above other content */
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="/inner-camera">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <!-- Vigilance360 title in the top left corner -->
+        <div class="logo">
+            <img src="\static\logo.jpg" alt="Camera Logo" class="logo">
+            
+        </div>
+        
+        <!-- Video upload title in the top middle -->
+        <h2>CCTV Camera</h2>
+    </header>
+
+    <section class="col-sm">
+        <img id="videoFeed" src="videoFeed.src" alt="Upload video">
+    </section>
+
+    <div style="text-align: center;">
+        <button id="startButton" class="btn">Start</button>
+        <button id="stopButton" class="btn">Stop</button>
+        <button id="analyzeButton" class="btn">Analyze</button> <!-- Added Analyze button -->
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const analyzeButton = document.getElementById('analyzeButton');
+        const videoFeed = document.getElementById('videoFeed');
+
+        let isRunning = false;
+
+        startButton.addEventListener('click', () => {
+            if (!isRunning) {
+                // Start detection
+                console.log('Starting detection...');
+                videoFeed.src = "/inner_web"; // Update the source to start detection
+                isRunning = true;
+            }
+        });
+
+        stopButton.addEventListener('click', () => {
+            if (isRunning) {
+                // Stop detection
+                console.log('Stopping detection...');
+                videoFeed.src = "http://127.0.0.1:5059/inner_camera_stop"; // Update the source to stop detection
+                isRunning = false;
+            
+            }
+        });
+
+        analyzeButton.addEventListener('click', () => {
+            // Analyze action
+            console.log('Analyzing...');
+            window.location.href = "http://127.0.0.1:5059/history";
+            // Add your analyze code here
+        });
+    </script>
+
+</body>
+
+</html>

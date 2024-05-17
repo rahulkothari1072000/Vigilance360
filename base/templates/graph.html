@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image</title>
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Apply font to the whole document */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Apply background styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: auto; /* Enable scrolling */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background: linear-gradient(120deg, #fcfaf6, #fcfaf6);
+        }
+
+        /* Styling for the header */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333333;
+            padding: 10px;
+            position: sticky;
+            margin-bottom: 20px;
+            flex-direction: column; /* Align items vertically */
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #012225;
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 0px; /* Adjust margin as needed */
+        }
+
+
+
+        h1 {
+            font-size: 2em;
+            color: #012225;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 500px;
+            margin-top: 50px;
+        }
+        
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Align items horizontally */
+            text-align: center;
+            margin: 20px auto; /* Center horizontally */
+        }
+
+
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the input box input */
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: #F9F9F9;
+            border: 2px solid #E0E0E0;
+            outline: none;
+            border-radius: 25px;
+            padding: 0 20px;
+            font-size: 1.2em;
+            color: #333333;
+            transition: .3s;
+        }
+
+        /* Styling for input focus */
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: #333333;
+        }
+
+        /* Styling for input box labels */
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: #666666;
+            transition: .3s;
+        }
+
+        /* Styling for label focus */
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label {
+            top: 10px;
+            font-size: .8em;
+            color: #999999;
+        }
+
+        /* Styling for buttons */
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: #333333;
+            border: none;
+            outline: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #ffffff;
+            font-weight: 600;
+            transition: background .3s;
+        }
+
+        
+
+        /* Styling for the image container */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Aligns the content vertically */
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        /* Set a maximum width for the image */
+        img {
+            max-width: 500px;
+        }
+
+        /* Styling for the table */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid black;
+        }
+
+        th, td {
+            border: 1px solid #00191f;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #388087;
+        }
+        tr:nth-child(even) {
+            background-color: #ddeaec; /* Alternate color for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f7fafa; /* Alternate color for odd rows */
+        }
+
+        .logoback {
+            position: absolute; /* Position the back arrow absolutely */
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            width: 50px; /* Set the desired width for the back arrow */
+            height: auto; /* Let the height adjust proportionally */
+            border-radius: 50%; /* Make the back arrow round */
+            margin: 0;
+            z-index: 1; /* Ensure the back arrow is above other content */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        
+        <div>
+            <a href="/history">
+                <img src="/static/back-arrow.png" alt="Back" class="logoback">
+            </a>
+        </div>
+        <div class="header">
+            <div class="logo">
+                <img src="\static\logo.jpg" alt="Camera Logo" class="logo">            
+            </div>
+        <h2>Graphical Representation</h2>
+    </div>
+
+    <div class="image-container">
+        {% for display_object in data %}
+        <!-- Display the image -->
+        <img src="\static\graphs\{{display_object.graph_path}}" alt="Image description">
+
+        <!-- Table to display detection statistics -->
+        <table>
+            <thead>
+                <tr>
+                    <th>detection id</th>
+                    <th>entry time</th>
+                    <th>exit time</th>
+                    <th>covered time</th>
+                    <th>uncovered time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person_object in display_object.detection_statistics %}
+                <tr>
+                    <td>id:{{person_object.id}}</td>
+                    <td>{{person_object.entry_time.strftime("%H:%M:%S")}}</td>
+                    <td>{{person_object.exit_time.strftime("%H:%M:%S")}}</td>
+                    <td>{{person_object.average_covered_time}} sec</td>
+                    <td>{{person_object.average_uncovered_time}} sec</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+    </header>
+</body>
+</html>
